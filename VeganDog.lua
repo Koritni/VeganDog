@@ -267,20 +267,19 @@ repeat
     if typed == nil or typed == '' then
         ClearConsole()
         print("you typed nothing\nif you don't know commands type \"help\"")
-        goto continue
-    end
-    typed = string.lower(typed)
-    typed = string.gsub(typed, "%s+", "")
-    if typed == 'exit' then
-        break
-    end
-    if Words[typed] then
-        ClearConsole()
-        Words[typed]()
     else
-        print("This game do not have this command\nif you don't know commands type \"help\"")
+        typed = string.lower(typed)
+        typed = string.gsub(typed, "%s+", "")
+        if typed == 'exit' then
+            break
+        end
+        if Words[typed] then
+            ClearConsole()
+            Words[typed]()
+        else
+            print("This game do not have this command\nif you don't know commands type \"help\"")
+        end
     end
-    ::continue::
 until typed == Words['exit']
 
 print("Exit from programm")
